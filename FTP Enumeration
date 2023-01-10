@@ -1,0 +1,13 @@
+service postgresql start
+workspace -a FTP_ENUM
+search portscan
+use 6
+**Port scan just to get info on target**
+auxiliary/scanner/ftp/ftp_version (good first one to use against FTP)
+**Now with the version you can find any exploits if there are any**
+auxiliary/scanner/ftp/ftp_login (good brute force option)
+user/pass file are found in /usr/share/metasploit-framework/data/wordlists/common_users.txt and /unix_passwords.txt
+**With any creds you can use FTP withing MSFconsole**
+ftp <ip> (if the service is down just give it a bit, with bruteforce it can sometimes dos the service)
+auxiliary/scanner/ftp/anonymous (anon login scanner)
+**This will show nothing if its not vulnerable**
