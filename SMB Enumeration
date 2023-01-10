@@ -1,0 +1,15 @@
+We can use MSF modules to enumerate SMB version, shares, users and perform brute force attacks in order to identify usernames and passwords
+
+service postgresql start
+msfconsole
+db_status
+search type:auxiliary name:smb
+auxiliary/scanner/smb/smb_version
+auxiliary/scanner/smb/smb_enumusers
+auxiliary/scanner/smb/smb_enumshares (set ShowFiles true is handy)
+auxiliary/scanner/smb/smb_login (brute force, ensure that any users found in smb_enumusers is in the list of usernames you brute force, or specify a specific name)
+
+Now if you wanted you could connect using credentials
+smbclient -L \\\\<ip>\\ -U admin
+smbclient -L \\\\<ip>\\<share name> -U admin
+ls, cd, cat, get 
