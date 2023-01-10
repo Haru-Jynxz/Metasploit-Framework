@@ -1,0 +1,20 @@
+You can import results from NMAP into the MSF database.
+
+Nmap <ip> -oX Target_1 (This will output the result to a xml file called Target_1)
+service postgresql start
+msfconsole
+db_status (shows our database status)
+**First you should create a new workspace before importing results**
+workspace -a Windows_Target
+workspace (checks active workspace)
+db_import /root/Target_1
+hosts (shows you your target)
+services (shows you the targets services from the nmap scan)
+vulns (This will list out the current vulnerabilities if any are found)
+
+It is possible to initiate an NMAP scan from within the metasploit database and save those results to that workspace
+We will see how to do this in a fresh workspace
+workspace -a NMAP_MSF_EXAMPLE
+
+db_nmap -Pn -sV -O <IP> (The results from this will be automatically imported to the workspace, the same as if you had imported the results)
+vulns (This will list out the current vulnerabilities if any are found)
