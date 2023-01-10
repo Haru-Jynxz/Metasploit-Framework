@@ -1,0 +1,13 @@
+service postgresql start
+msfconsole
+db_status
+workspace -a web_enum
+auxiliary/scanner/http/http_version (gets http version from the page depending on the TARGETURI)
+auxiliary/scanner/http/http_header (gets header information from the TARGETURI listed in the options)
+auxiliary/scanner/http/robots_txt 
+auxiliary/scanner/http/dir_scanner 
+auxiliary/scanner/http/files_dir
+auxiliary/scanner/http/http_login (brute force against login pages)
+set AUTH_URI (to the directory with the login example: /secure/) (and you may want to UNSET USERPASS_FILE as you already have USER_FILE and PASS_FILE)
+**you may also want to use a stronger user_file and pass_file instead of the default metasploit one**
+auxiliary/scanner/apache_userdir_enum
