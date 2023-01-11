@@ -1,0 +1,5 @@
+Start postgresql service, msfconsole database and workspace
+
+search type:auxiliary name:smtp
+auxiliary/scanner/smtp/smtp_version
+auxiliary/scanner/smtp/smtp_enum
