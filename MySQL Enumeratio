@@ -1,0 +1,23 @@
+**Star postgresql service and setup msf database / workspace**
+
+search type:auxiliary name:mysql 
+**Usually want to start with version module**
+**May want to brute force with auxiliary/scanner/mysql/mysql_login**
+set USERNAME root
+auxiliary/admin/mysql/mysql_enum (requires creds, good for database enumeration and hashes)
+auxiliary/admin/mysql/mysql_sql (requires creds, execute sql queries allowing you to interact with the database, very important)
+- set SQL show databases;
+- set SQL use 'any database title you see'
+- set SQL ' any sql query command '
+auxiliary/scanner/mysql/mysql_schemadump (Shows databases and tables within)
+
+mysql <ip> -u <user> -p <pass> (Direct connection method without using MSF modules)
+show databases;
+use <database>;
+show tables;
+
+**** Since you ran all these commands within MSFconsole the results are now stored and can be pulled out anytime ****
+hosts
+services
+loot
+creds
