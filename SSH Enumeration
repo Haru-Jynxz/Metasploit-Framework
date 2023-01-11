@@ -1,0 +1,6 @@
+Start postgresql service, setup MSF database and workspace
+
+search type:auxiliary name:ssh
+auxiliary/scanner/ssh/ssh_version
+auxiliary/scanner/ssh/ssh_login
+auxiliary/scanner/ssh/ssh_enumusers
