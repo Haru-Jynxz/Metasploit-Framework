@@ -1,0 +1,25 @@
+WMAP can be used to perform automated web app enum and vuln scanning and is available as a plugin to be loaded directly into MSF.
+
+service postgresql start
+workspace -a web_scanning
+
+load wmap (loads the wmap plugin)
+wmap_ (tab autocompletion shows available commands)
+
+wmap_sites -h
+wmap_sites -a <ip>
+wmap_targets -h
+wmap_targets -t http://<ip> (you can target specific parts of the website)
+wmap_sites -l (shows settings set)
+wmap_targets -l
+
+wmap_run -h
+wmap_run -t (shows all available modules based on target config)
+wmap_run -e (runs wmap against target)
+
+POST/PUT method available is worth investigation in conjunction with /data/ directory
+use auxiliary/scanner/http/http_put (will put a test file in the specified directory, different directories may allow this method just experiment)
+
+
+
+wmap_vulns -l (lists vulns found)
